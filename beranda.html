@@ -12,7 +12,6 @@
             font-family: Arial, sans-serif;
         }
 
-        /* Header Styles */
         header {
             background: white;
             padding: 1rem 2rem;
@@ -50,7 +49,6 @@
             object-fit: cover;
         }
 
-        /* Hero Section */
         .hero {
             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('bg-main.jpeg');
             background-size: cover;
@@ -86,7 +84,6 @@
             font-size: 1rem;
         }
 
-        /* Content Section */
         .content {
             padding: 0 2rem;
             max-width: 1200px;
@@ -210,7 +207,6 @@
             font-size: 14px;
         }
 
-        /* Newsletter Section */
         .newsletter {
             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('bg-main.jpeg');
             background-size: cover;
@@ -267,7 +263,6 @@
             font-weight: 500;
         }
 
-        /* Footer Styles */
         footer {
             padding: 3rem 2rem;
             background: white;
@@ -356,16 +351,162 @@
             text-decoration: none;
         }
 
-        /* Responsive untuk tablet dan mobile */
         @media (max-width: 1024px) {
             .video-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
+            .hero {
+                margin: 1rem;
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .content {
+                padding: 0 1rem;
+            }
+
+            .tabs {
+                overflow-x: auto;
+                padding-bottom: 1rem;
+                gap: 1rem;
+            }
+
+            .tab {
+                white-space: nowrap;
+            }
+
+            .newsletter {
+                margin: 1rem;
+                padding: 2rem 1rem;
+            }
+
+            .newsletter h2 {
+                font-size: 1.8rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.5rem;
+                text-align: center;
+            }
+
+            .newsletter-form input {
+                text-align: center;
+                padding: 0.8rem;
+            }
+
+            .newsletter-form input::placeholder {
+                text-align: center;
+            }
+
+            .newsletter-form button {
+                width: 100%;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .footer-section {
+                border-bottom: 1px solid #eee;
+                padding-bottom: 1rem;
+            }
+
+            .footer-section:first-child {
+                border-bottom: none;
+            }
+
+            .footer-section h3 {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                cursor: pointer;
+                margin-bottom: 0;
+                padding: 1rem 0;
+            }
+
+            .footer-section h3::after {
+                content: '>';
+                transform: rotate(0deg);
+                transition: transform 0.3s ease;
+            }
+
+            .footer-section ul {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                margin: 0;
+            }
+
+            .footer-section.active ul {
+                max-height: 300px; 
+                margin-top: 0.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .footer-section.active h3::after {
+                transform: rotate(90deg);
+            }
+
+            .footer-section:first-child h3::after {
+                display: none;
+            }
+
+            .footer-section ul li {
+                margin-bottom: 0.8rem;
+            }
+
+            .footer-section ul li:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
             .video-grid {
                 grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 1rem;
+            }
+
+            .logo img {
+                height: 20px;
+            }
+
+            .hero-button {
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -661,5 +802,34 @@
     </footer>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script>
+        function initMobileFooter() {
+        if (window.innerWidth <= 768) {
+            const footerSections = document.querySelectorAll('.footer-section:not(:first-child)');
+            
+            footerSections.forEach(section => {
+                const title = section.querySelector('h3');
+                if (title) {
+                    title.addEventListener('click', () => {
+                            // Tutup section lain yang sedang terbuka
+                            footerSections.forEach(otherSection => {
+                                if (otherSection !== section && otherSection.classList.contains('active')) {
+                                    otherSection.classList.remove('active');
+                                }
+                            });
+                            // Toggle section yang diklik
+                        section.classList.toggle('active');
+                    });
+                }
+            });
+        }
+        }
+
+        // Jalankan saat halaman dimuat
+        initMobileFooter();
+
+        // Jalankan ulang saat window diresize
+        window.addEventListener('resize', initMobileFooter);
+    </script>
 </body>
 </html>

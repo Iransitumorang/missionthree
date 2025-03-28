@@ -8,7 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             min-height: 100vh;
             margin: 0;
@@ -21,6 +21,7 @@
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             width: 100%;
             max-width: 400px;
+            margin: 0 auto;
         }
         .logo {
             color: #ffa500;
@@ -119,13 +120,163 @@
             cursor: pointer;
             color: #666;
         }
+        
+        @media (max-width: 768px) {
+            body {
+                background-color: white;
+                margin: 0;
+                padding: 0;
+            }
+
+            .register-container {
+                box-shadow: none;
+                padding: 16px;
+                border-radius: 16px;
+                background-color: #f8f8f8;
+                width: 90%;
+                max-width: none;
+                margin: 0 auto;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+                text-align: left;
+                margin-bottom: 0.5rem;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+                text-align: left;
+                margin-bottom: 1.5rem;
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+            }
+
+            input {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .btn-daftar,
+            .btn-masuk,
+            .google-register {
+                border-radius: 50px;
+                padding: 0.8rem;
+            }
+
+            .divider {
+                margin: 16px 0;
+                font-size: 0.9rem;
+            }
+
+            .phone-input {
+                flex-direction: row;
+            }
+
+            .phone-code {
+                width: 80px;
+                padding: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem;
+            }
+            .register-container {
+                padding: 1.5rem;
+                margin-top: 20px;
+            }
+
+            .phone-input {
+                flex-direction: row;
+            }
+
+            .phone-code {
+                width: 80px;
+                justify-content: flex-start;
+            }
+
+            .password-field .toggle-password {
+                padding: 0.8rem;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .register-container {
+                margin: 2rem;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .register-container:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            }
+
+            .btn-daftar,
+            .btn-masuk,
+            .google-register {
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+            }
+
+            .btn-daftar:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 2px 8px rgba(76,175,80,0.3);
+            }
+
+            .btn-masuk:hover {
+                transform: translateY(-2px);
+                background: #f1f8f1;
+            }
+
+            .google-register:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+
+            input:focus {
+                border-color: #4CAF50;
+                box-shadow: 0 0 0 2px rgba(76,175,80,0.1);
+                outline: none;
+            }
+
+            .toggle-password:hover {
+                color: #4CAF50;
+            }
+        }
+
+        .header {
+            width: 100%;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 12px 0;
+            margin: 0;
+            background: white;
+        }
+
+        .logo {
+            display: block;
+            margin-left: 32px;
+            margin-bottom: -4px;
+        }
+
+        .logo img {
+            height: 20px;
+            width: auto;
+            transform: translateY(4px);
+        }
     </style>
 </head>
 <body>
-    <div class="register-container">
+    <div class="header">
         <a href="#" class="logo">
             <img src="Logo.png" alt="videobelajar">
         </a>
+    </div>
+    
+    <div class="register-container">
         <h1>Pendaftaran Akun</h1>
         <p class="subtitle">Yuk, daftarkan akunmu sekarang juga!</p>
         
