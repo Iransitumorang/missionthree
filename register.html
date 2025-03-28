@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Akun</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f8f8f8;
+        }
+        .register-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        .logo {
+            color: #ffa500;
+            font-size: 24px;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .phone-input {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .phone-code {
+            width: 80px;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 0.5rem;
+        }
+        .phone-code img {
+            width: 20px;
+            height: 15px;
+        }
+        .phone-number {
+            flex: 1;
+        }
+        .btn-daftar {
+            background: #4CAF50;
+            color: white;
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        .btn-masuk {
+            background: #e8f5e9;
+            color: #4CAF50;
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        .divider {
+            text-align: center;
+            margin: 1rem 0;
+            color: #666;
+        }
+        .google-register {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            background: white;
+            box-sizing: border-box;
+        }
+        .password-field {
+            position: relative;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <a href="#" class="logo">
+            <img src="Logo.png" alt="videobelajar">
+        </a>
+        <h1>Pendaftaran Akun</h1>
+        <p class="subtitle">Yuk, daftarkan akunmu sekarang juga!</p>
+        
+        <form>
+            <div class="form-group">
+                <label>Nama Lengkap <span style="color: red;">*</span></label>
+                <input type="text" required>
+            </div>
+            
+            <div class="form-group">
+                <label>E-Mail <span style="color: red;">*</span></label>
+                <input type="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label>No. Hp <span style="color: red;">*</span></label>
+                <div class="phone-input">
+                    <div class="phone-code">
+                        <img src="https://flagcdn.com/w20/id.png" alt="ID">
+                        +62
+                    </div>
+                    <input type="tel" class="phone-number" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Kata Sandi <span style="color: red;">*</span></label>
+                <div class="password-field">
+                    <input type="password" required>
+                    <span class="toggle-password">👁️</span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Konfirmasi Kata Sandi <span style="color: red;">*</span></label>
+                <div class="password-field">
+                    <input type="password" required>
+                    <span class="toggle-password">👁️</span>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn-daftar" onclick="window.location.href='beranda.html'; return false;">Daftar</button>
+            <button type="button" class="btn-masuk" onclick="window.location.href='beranda.html'">Masuk</button>
+            
+            <div class="divider">atau</div>
+            
+            <button type="button" class="google-register">
+                <img src="https://www.google.com/favicon.ico" width="20" height="20">
+                Daftar dengan Google
+            </button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videobelajar - Platform Video Pembelajaran</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .logo {
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 24px;
+            width: auto;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .kategori-link {
+            text-decoration: none;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .profile-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 8px;
+            margin: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            max-width: 800px;
+            margin: 0 auto 1rem;
+        }
+
+        .hero p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        /* Content Section */
+        .content {
+            padding: 0 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+        }
+
+        .tab {
+            color: #666;
+            text-decoration: none;
+            padding-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .tab.active {
+            color: #ff5722;
+            border-bottom: 2px solid #ff5722;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .video-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .video-info {
+            padding: 16px;
+        }
+
+        .video-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .video-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .instructor {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .instructor-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+        }
+
+        .instructor-info {
+            font-size: 14px;
+        }
+
+        .instructor-name {
+            color: #333;
+        }
+
+        .instructor-role {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .stars {
+            color: #ffc107;
+        }
+
+        .price {
+            color: #4CAF50;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('newsletter-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+            border-radius: 0;
+        }
+
+        .newsletter-label {
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .newsletter p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 4px;
+            padding: 4px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            outline: none;
+            font-size: 0.9rem;
+        }
+
+        .newsletter-form button {
+            padding: 0.8rem 1.5rem;
+            background: #ffa500;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        /* Footer Styles */
+        footer {
+            padding: 3rem 2rem;
+            background: white;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-brand {
+            text-decoration: none;
+        }
+
+        .footer-brand img {
+            height: 24px;
+            width: auto;
+        }
+
+        .footer-description {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-address {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .footer-phone {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .footer-section h3 {
+            color: #333;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            text-decoration: none;
+        }
+
+        /* Responsive untuk tablet dan mobile */
+        @media (max-width: 1024px) {
+            .video-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">
+            <img src="Logo.png" alt="videobelajar">
+        </a>
+        <div class="header-right">
+            <a href="login.html" class="kategori-link">Kategori</a>
+            <img src="jenet.png" alt="Profile" class="profile-icon">
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Revolusi Pembelajaran: Temukan Ilmu Baru melalui Platform Video Interaktif!</h1>
+        <p>Temukan ilmu baru yang menarik dan mendalam melalui koleksi video pembelajaran berkualitas tinggi. Tidak hanya itu, Anda juga dapat berpartisipasi dalam latihan interaktif yang akan meningkatkan pemahaman Anda.</p>
+        <button class="hero-button">Temukan Video Course untuk Dipelajari!</button>
+    </section>
+
+    <section class="content">
+        <h2 class="section-title">Koleksi Video Pembelajaran Unggulan</h2>
+        <p class="section-subtitle">Jelajahi Dunia Pengetahuan Melalui Pilihan Kami!</p>
+        <div class="tabs">
+            <a href="#" class="tab active">Semua Kelas</a>
+            <a href="#" class="tab">Pemasaran</a>
+            <a href="#" class="tab">Desain</a>
+            <a href="#" class="tab">Pengembangan Diri</a>
+            <a href="#" class="tab">Bisnis</a>
+        </div>
+
+        <div class="video-grid">
+            <!-- Video Card 1 -->
+            <div class="video-card">
+                <img src="card1.png" alt="Video Thumbnail" class="video-thumbnail">
+                <div class="video-info">
+                    <h3 class="video-title">Big 4 Auditor Financial Analyst</h3>
+                    <p class="video-description">Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan...</p>
+                    <div class="instructor">
+                        <img src="Avatar.png" alt="Jenna" class="instructor-avatar">
+                        <div class="instructor-info">
+                            <div class="instructor-name">Jenna Ortega</div>
+                            <div class="instructor-role">Senior Accountant di Gojek</div>
+                        </div>
+                    </div>
+                    <div class="course-meta">
+                        <div class="rating">
+                            <span class="stars">★★★☆☆</span>
+                            <span>3.5 (86)</span>
+                        </div>
+                        <div class="price">Rp 300K</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 2 -->
+            <div class="video-card">
+                <img src="card1.png" alt="Video Thumbnail" class="video-thumbnail">
+                <div class="video-info">
+                    <h3 class="video-title">Big 4 Auditor Financial Analyst</h3>
+                    <p class="video-description">Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan...</p>
+                    <div class="instructor">
+                        <img src="Avatar.png" alt="Jenna" class="instructor-avatar">
+                        <div class="instructor-info">
+                            <div class="instructor-name">Jenna Ortega</div>
+                            <div class="instructor-role">Senior Accountant di Gojek</div>
+                        </div>
+                    </div>
+                    <div class="course-meta">
+                        <div class="rating">
+                            <span class="stars">★★★☆☆</span>
+                            <span>3.5 (86)</span>
+                        </div>
+                        <div class="price">Rp 300K</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 3 -->
+            <div class="video-card">
+                <img src="card1.png" alt="Video Thumbnail" class="video-thumbnail">
+                <div class="video-info">
+                    <h3 class="video-title">Big 4 Auditor Financial Analyst</h3>
+                    <p class="video-description">Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan...</p>
+                    <div class="instructor">
+                        <img src="Avatar.png" alt="Jenna" class="instructor-avatar">
+                        <div class="instructor-info">
+                            <div class="instructor-name">Jenna Ortega</div>
+                            <div class="instructor-role">Senior Accountant di Gojek</div>
+                        </div>
+                    </div>
+                    <div class="course-meta">
+                        <div class="rating">
+                            <span class="stars">★★★☆☆</span>
+                            <span>3.5 (86)</span>
+                        </div>
+                        <div class="price">Rp 300K</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Duplicate the same 3 cards -->
+            <!-- Video Card 4, 5, 6 (same structure as above) -->
+        </div>
+        <div class="video-grid">
+            <!-- Video Card 1 -->
+            <div class="video-card">
+                <img src="card1.png" alt="Video Thumbnail" class="video-thumbnail">
+                <div class="video-info">
+                    <h3 class="video-title">Big 4 Auditor Financial Analyst</h3>
+                    <p class="video-description">Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan...</p>
+                    <div class="instructor">
+                        <img src="Avatar.png" alt="Jenna" class="instructor-avatar">
+                        <div class="instructor-info">
+                            <div class="instructor-name">Jenna Ortega</div>
+                            <div class="instructor-role">Senior Accountant di Gojek</div>
+                        </div>
+                    </div>
+                    <div class="course-meta">
+                        <div class="rating">
+                            <span class="stars">★★★☆☆</span>
+                            <span>3.5 (86)</span>
+                        </div>
+                        <div class="price">Rp 300K</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 2 -->
+            <div class="video-card">
+                <img src="card1.png" alt="Video Thumbnail" class="video-thumbnail">
+                <div class="video-info">
+                    <h3 class="video-title">Big 4 Auditor Financial Analyst</h3>
+                    <p class="video-description">Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan...</p>
+                    <div class="instructor">
+                        <img src="Avatar.png" alt="Jenna" class="instructor-avatar">
+                        <div class="instructor-info">
+                            <div class="instructor-name">Jenna Ortega</div>
+                            <div class="instructor-role">Senior Accountant di Gojek</div>
+                        </div>
+                    </div>
+                    <div class="course-meta">
+                        <div class="rating">
+                            <span class="stars">★★★☆☆</span>
+                            <span>3.5 (86)</span>
+                        </div>
+                        <div class="price">Rp 300K</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 3 -->
+            <div class="video-card">
+                <img src="card1.png" alt="Video Thumbnail" class="video-thumbnail">
+                <div class="video-info">
+                    <h3 class="video-title">Big 4 Auditor Financial Analyst</h3>
+                    <p class="video-description">Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan...</p>
+                    <div class="instructor">
+                        <img src="Avatar.png" alt="Jenna" class="instructor-avatar">
+                        <div class="instructor-info">
+                            <div class="instructor-name">Jenna Ortega</div>
+                            <div class="instructor-role">Senior Accountant di Gojek</div>
+                        </div>
+                    </div>
+                    <div class="course-meta">
+                        <div class="rating">
+                            <span class="stars">★★★☆☆</span>
+                            <span>3.5 (86)</span>
+                        </div>
+                        <div class="price">Rp 300K</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Duplicate the same 3 cards -->
+            <!-- Video Card 4, 5, 6 (same structure as above) -->
+        </div>
+        <div class="video-grid">
+            <!-- Video Card 1 -->
+            <div class="video-card">
+                <img src="card1.png" alt="Video Thumbnail" class="video-thumbnail">
+                <div class="video-info">
+                    <h3 class="video-title">Big 4 Auditor Financial Analyst</h3>
+                    <p class="video-description">Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan...</p>
+                    <div class="instructor">
+                        <img src="Avatar.png" alt="Jenna" class="instructor-avatar">
+                        <div class="instructor-info">
+                            <div class="instructor-name">Jenna Ortega</div>
+                            <div class="instructor-role">Senior Accountant di Gojek</div>
+                        </div>
+                    </div>
+                    <div class="course-meta">
+                        <div class="rating">
+                            <span class="stars">★★★☆☆</span>
+                            <span>3.5 (86)</span>
+                        </div>
+                        <div class="price">Rp 300K</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 2 -->
+            <div class="video-card">
+                <img src="card1.png" alt="Video Thumbnail" class="video-thumbnail">
+                <div class="video-info">
+                    <h3 class="video-title">Big 4 Auditor Financial Analyst</h3>
+                    <p class="video-description">Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan...</p>
+                    <div class="instructor">
+                        <img src="Avatar.png" alt="Jenna" class="instructor-avatar">
+                        <div class="instructor-info">
+                            <div class="instructor-name">Jenna Ortega</div>
+                            <div class="instructor-role">Senior Accountant di Gojek</div>
+                        </div>
+                    </div>
+                    <div class="course-meta">
+                        <div class="rating">
+                            <span class="stars">★★★☆☆</span>
+                            <span>3.5 (86)</span>
+                        </div>
+                        <div class="price">Rp 300K</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 3 -->
+            <div class="video-card">
+                <img src="card1.png" alt="Video Thumbnail" class="video-thumbnail">
+                <div class="video-info">
+                    <h3 class="video-title">Big 4 Auditor Financial Analyst</h3>
+                    <p class="video-description">Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan...</p>
+                    <div class="instructor">
+                        <img src="Avatar.png" alt="Jenna" class="instructor-avatar">
+                        <div class="instructor-info">
+                            <div class="instructor-name">Jenna Ortega</div>
+                            <div class="instructor-role">Senior Accountant di Gojek</div>
+                        </div>
+                    </div>
+                    <div class="course-meta">
+                        <div class="rating">
+                            <span class="stars">★★★☆☆</span>
+                            <span>3.5 (86)</span>
+                        </div>
+                        <div class="price">Rp 300K</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Duplicate the same 3 cards -->
+            <!-- Video Card 4, 5, 6 (same structure as above) -->
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="newsletter-label">NEWSLETTER</div>
+        <h2>Mau Belajar Lebih Banyak?</h2>
+        <p>Daftarkan dirimu untuk mendapatkan informasi terbaru dan<br>penawaran spesial dari program-program terbaik hariesok.id</p>
+        <div class="newsletter-form">
+            <input type="email" placeholder="Masukkan Emailmu">
+            <button>Subscribe</button>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-brand">
+                    <img src="Logo.png" alt="videobelajar" style="height: 24px; width: auto;">
+                </div>
+                <p class="footer-description">Gali Potensi Anda Melalui Pembelajaran Video di hariesok.id!</p>
+                <p class="footer-address">Jl. Usman Effendi No. 50 Lowokwaru, Malang</p>
+                <p class="footer-phone">+62-877-7123-1234</p>
+            </div>
+            <div class="footer-section">
+                <h3>Kategori</h3>
+                <ul>
+                    <li><a href="#">Digital & Teknologi</a></li>
+                    <li><a href="#">Pemasaran</a></li>
+                    <li><a href="#">Manajemen Bisnis</a></li>
+                    <li><a href="#">Pengembangan Diri</a></li>
+                    <li><a href="#">Desain</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Perusahaan</h3>
+                <ul>
+                    <li><a href="#">Tentang Kami</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Kebijakan Privasi</a></li>
+                    <li><a href="#">Ketentuan Layanan</a></li>
+                    <li><a href="#">Bantuan</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Komunitas</h3>
+                <ul>
+                    <li><a href="#">Tips Sukses</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>©2023 Gerobak Sayur All Rights Reserved.</div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</body>
+</html>
